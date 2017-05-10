@@ -1,3 +1,18 @@
+<Activity />
+<Balance />
+
+“Activity” items, as you’ll find in the first file, are analogous to ledger items that affect account balance in our ecosystem. An Activity can be any of the following five types:
+
+● Transaction
+● Fee
+● Reward
+● Payment
+● Other
+Activity objects normalize the data coming from the five parent types listed above. The second file contains a list of Transactions from the same account. Each Activity of type “transaction” will correspond to an object in the second JSON file. The Activity will refer to its parent object through the ​parent_id​ field, and will specify what type of activity it is through the activity_type​ field.
+All Transaction Activities will also have metadata attached in the ​activity_meta​ field, which may include a ​MCC code​.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
@@ -1516,17 +1531,17 @@ When you build the project, Create React App will place the `public` folder cont
 2. Install `serve` by running `npm install --save serve`.
 
 3. Add this line to `scripts` in `package.json`:
-    
+
     ```
     "now-start": "serve build/",
     ```
-    
+
 4. Run `now` from your project directory. You will see a **now.sh** URL in your output like this:
-    
+
     ```
     > Ready! https://your-project-dirname-tpspyhtdtk.now.sh (copied to clipboard)
     ```
-    
+
     Paste that URL into your browser when the build is complete, and you will see your deployed app.
 
 Details are available in [this article.](https://zeit.co/blog/now-static)
