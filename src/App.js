@@ -20,18 +20,19 @@ class App extends Component {
           <h2>VisualizeEverything</h2>
         </div>
         <div className="container-fluid">
+          <button className="btn btn-default" onClick={console.log('click')}>Payments only</button>
 
           <h3>Payments</h3>
           <table className="table table-striped table-hover">
             <thead>
             <tr>
               <th>#</th>
-              <th>parent Id</th>
-          <th>activity_type</th>
-          <th>Name:</th>
-          <th>Amount</th>
-          <th>Meta mcc</th>
-          <th>Transaction</th>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Category / Type</th>
+              <th>Amount</th>
+              <th>Meta MCC</th>
 
         </tr>
         </thead>
