@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import activityData from './activity_data.json'
+import * as selectors from './selectors'
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -36,7 +37,21 @@ describe('Activity items',()=>{
     expect(others.length).toBe(156 - (1+142+11+2))
   })
 
-  it('')
+  it('should be able to calculate totals of all', ()=>{
+    const total = selectors.getTotal(activityData)
+    expect(total).toBe(20847.24)
+  })
+  it('should calculate total of rewards', ()=>{
+    const rewards = activityData.filter((a)=>a.activity_type == 'rewards')
+    const rewardsTotal = selectors.getTotal(rewards)
+    expect(rewardsTotal).toBe(-39.62)
+  })
+
+  it('should calculate total of payments', ()=>{
+    const payments = activityData.filter((a)=>a.activity_type == 'payments')
+    const paymentsTotal = selectors.getTotal(payments)
+    expect(paymentsTotal).toBe(14806.72)
+  })
 })
 
 describe('Transaction items', ()=>{

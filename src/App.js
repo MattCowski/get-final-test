@@ -5,6 +5,7 @@ import activityData from './activity_data.json'
 import transactionData from './transaction_data.json'
 import Activity from './Activity'
 import Transaction from './Transaction'
+import * as selectors from './selectors'
 
 class App extends Component {
   render() {
@@ -18,8 +19,10 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>VisualizeEverything</h2>
+
         </div>
         <div className="container-fluid">
+          Total Amount: {selectors.getTotal(payments)}
           <button className="btn btn-default" onClick={console.log('click')}>Payments only</button>
 
           <h3>Payments</h3>
