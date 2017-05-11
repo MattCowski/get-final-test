@@ -7,15 +7,18 @@ export default ({id, data}) =>{
     return {[transaction.id]:transaction}
   })
   const transactionKeys = Object.keys(transactionObject)
+  const activityTransaction = transactionKeys.includes(data.parent_id) ? '': null
+  const transactionById = (id) => transactionData.filter((transaction)=> transaction.id == id)
 
   return (
-    <div className="row">
-    <div className="col-xs-2">parent ID:{data.parent_id}</div>
-    <div className="col-xs-2">activity_type: {data.activity_type}</div>
-    <div className="col-xs-2">Name: {data.name}</div>
-    <div className="col-xs-2">Amount: ${data.amount}</div>
-    <div className="col-xs-2">Transaction: {JSON.stringify(transactionKeys.includes(data.parent_id))}</div>
-
-  </div>
+    <tr onClick={()=>console.log(id)}>
+    <td><input type="checkbox"/></td>
+    <td>{data.parent_id}</td>
+    <td>{data.activity_type}</td>
+    <td>{data.name}</td>
+    <td>{data.amount}</td>
+    <td>{data.activity_meta && data.activity_meta.mcc}</td>
+    <td>{JSON.stringify(transactionById(data.parent_id).length,null,2)}</td>
+  </tr>
   )
 }
