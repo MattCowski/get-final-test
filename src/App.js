@@ -22,8 +22,23 @@ class App extends Component {
         <div className="container-fluid">
 
           <h3>Payments</h3>
-          <Transaction/>
-          {activityData.map((activity)=> <Activity id={activity.id} data={activity}/> )}
+          <table className="table table-striped table-hover">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>parent Id</th>
+          <th>activity_type</th>
+          <th>Name:</th>
+          <th>Amount</th>
+          <th>Meta mcc</th>
+          <th>Transaction</th>
+
+        </tr>
+        </thead>
+        <tbody>
+            {activityData.map((activity)=> <Activity id={activity.id} data={activity}/> )}
+          </tbody>
+          </table>
         </div>
 
       </div>
