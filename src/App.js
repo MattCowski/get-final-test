@@ -5,6 +5,7 @@ import activityData from './activity_data.json'
 import transactionData from './transaction_data.json'
 import Activity from './Activity'
 import Transaction from './Transaction'
+import Map from './Map'
 
 class App extends Component {
   render() {
@@ -21,7 +22,7 @@ class App extends Component {
         </div>
         <div className="container-fluid">
           <button className="btn btn-default" onClick={console.log('click')}>Payments only</button>
-
+          <Map />
           <h3>Payments</h3>
           <table className="table table-striped table-hover">
             <thead>
