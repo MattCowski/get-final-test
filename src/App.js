@@ -36,7 +36,7 @@ class App extends Component {
         </tr>
         </thead>
         <tbody>
-            {activityData.map((activity)=> <Activity id={activity.id} data={activity}/> )}
+            {activityData.map((activity, index)=> <Activity key={index} id={activity.id} data={activity}/> )}
           </tbody>
           </table>
         </div>
