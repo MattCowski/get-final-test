@@ -57,6 +57,8 @@ describe('Activity items',()=>{
 describe('Transaction items', ()=>{
   it('corresponds to an activity via Activity\'s parent_id',()=>{
 
+const transactionById = selectors.getTransactionById(activityData[0].parent_id)
+expect(transactionById[0].id).toBe(20226)
   })
 
 })

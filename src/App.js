@@ -19,6 +19,7 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>VisualizeEverything</h2>
+          {/* <Transaction id={20226}/> */}
 
         </div>
         <div className="container-fluid">

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import transactionData from './transaction_data.json'
+import * as selectors from './selectors'
 
-export default ({data}) =>{
-  const transactionObject = transactionData.map((transaction)=>{
-    return {[transaction.id]:transaction}
-  })
+export default ({id}) =>{
   return (
-    <code>{JSON.stringify(transactionObject[0])}</code>
+    <code>{JSON.stringify(selectors.getTransactionById(id))}</code>
   )
 }
