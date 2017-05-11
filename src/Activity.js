@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import transactionData from './transaction_data.json'
+import moment from 'moment'
 
 export default ({id, data}) =>{
   const isTransaction = data.activity_type == 'transactions'
@@ -8,7 +9,7 @@ export default ({id, data}) =>{
   return (
     <tr onClick={()=>console.log(id, transactionById(data.parent_id))}>
     <td><input type="checkbox"/></td>
-    <td>{data.updated_at}</td>
+    <td>{moment(data.updated_at).format("MMM Do [']YY")}</td>
     <td>{data.name}</td>
     <td>{data.description}</td>
     <td>{data.activity_type}</td>
