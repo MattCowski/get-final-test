@@ -4,7 +4,7 @@ import './App.css';
 import Transaction from './Transaction'
 import Table from '../containers/Table'
 import FilterLink from './FilterLink'
-
+import Chart from '../containers/Chart'
 
 const App = ({transaction, activityType, clearTransactionId, totalAmount, params}) =>
       <div className="App">
@@ -14,6 +14,7 @@ const App = ({transaction, activityType, clearTransactionId, totalAmount, params
         </div>
 
         <div className="container-fluid">
+          <Chart params={params}/>
           <h3>Expense Activity</h3>
           Filter by:{" "}
           <FilterLink filter="payments">Payments</FilterLink>{" "}
