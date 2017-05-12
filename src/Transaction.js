@@ -1,9 +1,4 @@
-import React, { Component } from 'react';
-import transactionData from './transaction_data.json'
-import * as selectors from './selectors'
+import React from 'react';
 
-export default ({id}) =>{
-  return (
-    <code>{JSON.stringify(selectors.getTransactionById(id))}</code>
-  )
-}
+export default ({transaction}) =>
+  <code>{JSON.stringify(transaction)}</code>

@@ -1,11 +1,13 @@
 import React from 'react';
 import Activity from './Activity'
 import { connect } from 'react-redux'
+import * as selectors from '../selectors'
+
 
 const mapStateToProps = (state, ownProps)=> {
-  console.log(state)
+  const filteredActivities = selectors.getActivitiesByFilter(state.activities, state.activityType)
   return {
-    activities: state.activities
+    activities: filteredActivities
   }
 }
 
@@ -17,7 +19,6 @@ const mapDispatchToProps = (dispatch)=> {
 
 
 const Table = ({onRowClick, activities}) =>
-  // const transactionById = selectors.getTransactionById(data.parent_id)
   <table className="table table-striped table-hover">
     <thead>
       <tr>

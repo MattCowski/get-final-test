@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+// import {App} from './App';
 import activityData from './activity_data.json'
 import * as selectors from './selectors'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-});
+// it('renders without crashing', () => {
+//   const div = document.createElement('div');
+//   ReactDOM.render(<App />, div);
+// });
 
 describe('Activity items',()=>{
   it('can be filtered by 5 types (transactions, fees, rewards, payments, other)',()=>{
@@ -57,8 +57,16 @@ describe('Activity items',()=>{
 describe('Transaction items', ()=>{
   it('corresponds to an activity via Activity\'s parent_id',()=>{
 
-const transactionById = selectors.getTransactionById(activityData[0].parent_id)
-expect(transactionById[0].id).toBe(20226)
+  const transactionById = selectors.getTransactionById(activityData[0].parent_id)
+  expect(transactionById[0].id).toBe(20226)
   })
 
+})
+
+
+describe('getActivitiesByFilter selector',()=>{
+  it('should return all activities if filter is null',()=>{
+    expect(selectors.getActivitiesByFilter(activityData, '').length)
+    .toBe(156)
+  })
 })
