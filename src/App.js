@@ -3,23 +3,29 @@ import logo from './logo.svg';
 import './App.css';
 import activityData from './activity_data.json'
 import transactionData from './transaction_data.json'
-import Activity from './Activity'
 import Transaction from './Transaction'
 import * as selectors from './selectors'
+import { connect } from 'react-redux'
+import Table from './components/Table'
 
-class App extends Component {
-  render() {
+const mapStateToProps = (state) => {
+  return {
+    transaction: state.transaction
+  }
+}
+
+const App = ({dispatch, transaction}) => {
     const payments = activityData.filter((activity)=>activity.activity_type == 'payments')
     const transactions = activityData.filter((activity)=>activity.activity_type == 'transactions')
     const rewards = activityData.filter((activity)=>activity.activity_type == 'rewards')
     const fees = activityData.filter((activity)=>activity.activity_type == 'fees')
-    const other = ''
+
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>VisualizeEverything</h2>
-          {/* <Transaction id={20226}/> */}
+          <Transaction id={transaction.id}/>
 
         </div>
         <div className="container-fluid">
@@ -27,28 +33,11 @@ class App extends Component {
           <button className="btn btn-default" onClick={console.log('click')}>Payments only</button>
 
           <h3>Payments</h3>
-          <table className="table table-striped table-hover">
-            <thead>
-            <tr>
-              <th>#</th>
-              <th>Date</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Category / Type</th>
-              <th>Amount</th>
-              <th>Meta MCC</th>
-
-        </tr>
-        </thead>
-        <tbody>
-            {activityData.map((activity, index)=> <Activity key={index} id={activity.id} data={activity}/> )}
-          </tbody>
-          </table>
+          <Table />
         </div>
 
       </div>
     );
   }
-}
 
-export default App;
+export default connect(mapStateToProps)(App)
