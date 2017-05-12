@@ -1,4 +1,10 @@
 import React from 'react';
 
-export default ({transaction}) =>
-  <code>{JSON.stringify(transaction)}</code>
+export default ({transaction, onClick}) =>
+  <div className="row">
+    <div className="col-xm-12">
+      <button className="btn btn-primary" onClick={onClick}>View all transactions</button>
+      <div className='well'>{JSON.stringify(transaction)}</div>
+    </div>
+
+  </div>
