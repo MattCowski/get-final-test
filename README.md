@@ -5,6 +5,7 @@ TODO:
 - [ ] graph
 - [ ] proptypes and more tests (including enzyme)
 - [ ] separate selector tests out
+- [ ] deploy
 
 Explain:
 - How I leveraged TDD to speed development of filtering selectors
