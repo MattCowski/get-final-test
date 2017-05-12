@@ -1,6 +1,4 @@
-import React from 'react';
-
-import * as selectors from '../selectors'
+import React, {PropTypes} from 'react';
 import moment from 'moment'
 
 const Activity = ({id, data, onRowClick}) =>{
@@ -16,4 +14,10 @@ const Activity = ({id, data, onRowClick}) =>{
   </tr>
   )
 }
+Activity.propTypes = {
+  onRowClick: PropTypes.func.isRequired,
+  // data: PropTypes.obj.isRequired,
+  // id: PropTypes.num.isRequired
+}
+
 export default Activity

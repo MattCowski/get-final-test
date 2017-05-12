@@ -22,7 +22,6 @@ export function activities(state=activityData, action) {
 }
 
 export default combineReducers({
-
   activities,
   transaction,
 })

@@ -1,23 +1,5 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import Activity from './Activity'
-import { connect } from 'react-redux'
-import * as selectors from '../selectors'
-
-
-const mapStateToProps = (state, ownProps)=> {
-  const filter = ownProps.params.activityType
-  const filteredActivities = selectors.getActivitiesByFilter(state.activities, filter)
-  return {
-    activities: filteredActivities
-  }
-}
-
-const mapDispatchToProps = (dispatch)=> {
-  return {
-    onRowClick:(id)=> dispatch({ type: 'SET_SELECTED_ID', id })
-  }
-}
-
 
 const Table = ({onRowClick, activities}) =>
   <table className="table table-striped table-hover">
@@ -37,4 +19,10 @@ const Table = ({onRowClick, activities}) =>
     </tbody>
   </table>
 
-export default connect(mapStateToProps, mapDispatchToProps)(Table)
+
+Table.propTypes = {
+  onRowClick: PropTypes.func.isRequired,
+  // activities: PropTypes.obj.isRequired
+}
+
+export default Table

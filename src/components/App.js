@@ -1,30 +1,12 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Transaction from './Transaction'
-import * as selectors from './selectors'
-import { connect } from 'react-redux'
-import Table from './components/Table'
-import FilterLink from './containers/FilterLink'
+import Table from '../containers/Table'
+import FilterLink from './FilterLink'
 
-const mapStateToProps = (state, ownProps) => {
-  const filter = ownProps.params.activityType
-  const filteredActivities = selectors.getActivitiesByFilter(state.activities, filter)
-  return {
-    transaction: state.transaction,
-    activityType: filter,
-    totalAmount: selectors.getTotal(filteredActivities)
-  }
-}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    clearTransactionId: ()=> dispatch({type:'CLEAR_TRANSACTION_ID'})
-  }
-}
-
-const App = ({dispatch, transaction, activityType, clearTransactionId, totalAmount, params}) => {
-    return (
+const App = ({transaction, activityType, clearTransactionId, totalAmount, params}) =>
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -44,14 +26,17 @@ const App = ({dispatch, transaction, activityType, clearTransactionId, totalAmou
           <h4>Total {activityType} amount: ${totalAmount.toString().replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,")}</h4>
           {transaction.id ?
             <Transaction transaction={transaction} onClick={clearTransactionId}/>
-
             : <Table params={params}/>
           }
 
         </div>
-
       </div>
-    );
-  }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+App.propTypes = {
+  clearTransactionId: PropTypes.func.isRequired,
+  // transaction: PropTypes.obj.isRequired,
+  totalAmount: PropTypes.num
+}
+
+
+export default App

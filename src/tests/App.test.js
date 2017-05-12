@@ -1,13 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import {App} from './App';
-import activityData from './activity_data.json'
-import * as selectors from './selectors'
-
-// it('renders without crashing', () => {
-//   const div = document.createElement('div');
-//   ReactDOM.render(<App />, div);
-// });
+import activityData from '../activity_data.json'
+import * as selectors from '../selectors'
 
 describe('Activity items',()=>{
   it('can be filtered by 5 types (transactions, fees, rewards, payments, other)',()=>{

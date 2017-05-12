@@ -1,17 +1,15 @@
-<Activity />
-<Balance />
+TODO:
+- [ ] separate actions into own folder
+- [ ] npm fetch for mock json data
+- [ ] pagination
+- [ ] graph
+- [ ] proptypes and more tests (including enzyme)
+- [ ] separate selector tests out
 
-“Activity” items, as you’ll find in the first file, are analogous to ledger items that affect account balance in our ecosystem. An Activity can be any of the following five types:
-
-● Transaction
-● Fee
-● Reward
-● Payment
-● Other
-Activity objects normalize the data coming from the five parent types listed above. The second file contains a list of Transactions from the same account. Each Activity of type “transaction” will correspond to an object in the second JSON file. The Activity will refer to its parent object through the ​parent_id​ field, and will specify what type of activity it is through the activity_type​ field.
-All Transaction Activities will also have metadata attached in the ​activity_meta​ field, which may include a ​MCC code​.
-
-
+Explain:
+- How I leveraged TDD to speed development of filtering selectors
+- how url /transactions will filter
+- clicking on transactions will show more about it
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
