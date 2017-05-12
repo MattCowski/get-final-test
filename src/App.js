@@ -5,9 +5,12 @@ import Transaction from './Transaction'
 import * as selectors from './selectors'
 import { connect } from 'react-redux'
 import Table from './components/Table'
+import FilterLink from './containers/FilterLink'
 
-const mapStateToProps = (state) => {
-  const filteredActivities = selectors.getActivitiesByFilter(state.activities, state.activityType)
+const mapStateToProps = (state, ownProps) => {
+  const filter = ownProps.params.activityType || state.activityType
+  console.log(filter, state.activityType)
+  const filteredActivities = selectors.getActivitiesByFilter(state.activities, filter)
   return {
     transaction: state.transaction,
     activityType: state.activityType,
@@ -21,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const App = ({dispatch, transaction, activityType, setFilter, totalAmount}) => {
+const App = ({dispatch, transaction, activityType, setFilter, totalAmount, params}) => {
     return (
       <div className="App">
         <div className="App-header">
@@ -31,6 +34,7 @@ const App = ({dispatch, transaction, activityType, setFilter, totalAmount}) => {
         </div>
 
         <div className="container-fluid">
+          <FilterLink filter="payments">Payments</FilterLink>
           <button className="btn btn-default" onClick={()=>setFilter('FILTER_BY_REWARDS')}>REWARDS</button>
           <button className="btn btn-default" onClick={()=>setFilter('FILTER_BY_FEES')}>FEES</button>
           <button className="btn btn-default" onClick={()=>setFilter('FILTER_BY_PAYMENTS')}>PAYMENTS</button>
@@ -40,7 +44,7 @@ const App = ({dispatch, transaction, activityType, setFilter, totalAmount}) => {
           Total Amount: {totalAmount}
 
           <h3>Expense Activity</h3>
-          <Table />
+          <Table params={params}/>
         </div>
 
       </div>
