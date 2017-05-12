@@ -11,7 +11,7 @@ const Activity = ({id, data, onRowClick}) =>{
     <td>{data.name}</td>
     <td>{data.description}</td>
     <td>{data.activity_type}</td>
-    <td>${data.amount}</td>
+    <td>${data.amount.replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,")}</td>
     <td>{data.activity_meta && data.activity_meta.mcc || 'N/A'}</td>
   </tr>
   )

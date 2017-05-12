@@ -1,7 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
 import App from './App';
-import Transaction from './Transaction'
 
 import './index.css';
 import reducer from './reducers'
@@ -13,10 +12,6 @@ let store = createStore(reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-store.subscribe(() =>
-  console.log(store.getState())
-)
-{/* <Transaction transaction={transaction}/> */}
 
 const Root = () => (
   <Provider store={store}>
