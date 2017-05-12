@@ -1,16 +1,30 @@
-TODO:
+
+To run, `npm i && npm start`
+
+
+Explanation:
+- Added react-router for ability of urls that reflect the applied filter i.e. /transactions or /payments
+- Clicking on a row with a transaction type (only) will reveal the associated transaction data. This is currently just showing the JSON (see next steps below)
+- [Live streamed for added transparency and to walkthrough my thought process and methods](https://www.liveedu.tv/mattcowski/2wLKG-expense-activity-dashboard-in-react-redux/avvpN-expense-activity-dashboard-in-react-redux-3/)
+- SOC by separating business logic (containers, reducers, selectors) from UI (presentational components) and closely following Redux conventions.
+- Chart and "Total" updates based on activity type filter -- preliminary just to demo possibilities. Focused more on how to properly scope and implement features in a maintainable way.
+- Leveraged stateless functional components for code cleanliness.
+- Keeping immutability concerns in mind.
+- Out of time but I would obviously continue with splitting out actions, constants for the action.types, and accompanying unit tests.
+- TDD with unit tests to strengthen and speed up development of selectors that e.g. filter the activity data
+
+
+Next steps:
+- [ ] style selected transaction data
 - [ ] separate actions into own folder
-- [ ] npm fetch for mock json data
+- [ ] npm fetch and mocking fetch json data (and async-actions)
 - [ ] pagination
-- [ ] graph
+- [ ] more graph improvements
 - [ ] proptypes and more tests (including enzyme)
 - [ ] separate selector tests out
 - [ ] deploy
 
-Explain:
-- How I leveraged TDD to speed development of filtering selectors
-- how url /transactions will filter
-- clicking on transactions will show more about it
+(below is the OG react-create-app readme)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
