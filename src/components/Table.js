@@ -5,8 +5,7 @@ import * as selectors from '../selectors'
 
 
 const mapStateToProps = (state, ownProps)=> {
-  const filter = ownProps.params.activityType //|| state.activityType
-  console.log('filter is',filter)
+  const filter = ownProps.params.activityType
   const filteredActivities = selectors.getActivitiesByFilter(state.activities, filter)
   return {
     activities: filteredActivities

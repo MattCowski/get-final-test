@@ -8,43 +8,46 @@ import Table from './components/Table'
 import FilterLink from './containers/FilterLink'
 
 const mapStateToProps = (state, ownProps) => {
-  const filter = ownProps.params.activityType || state.activityType
-  console.log(filter, state.activityType)
+  const filter = ownProps.params.activityType
   const filteredActivities = selectors.getActivitiesByFilter(state.activities, filter)
   return {
     transaction: state.transaction,
-    activityType: state.activityType,
+    activityType: filter,
     totalAmount: selectors.getTotal(filteredActivities)
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setFilter:(type)=>dispatch({type})
+    clearTransactionId: ()=> dispatch({type:'CLEAR_TRANSACTION_ID'})
   }
 }
 
-const App = ({dispatch, transaction, activityType, setFilter, totalAmount, params}) => {
+const App = ({dispatch, transaction, activityType, clearTransactionId, totalAmount, params}) => {
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>VisualizeEverything</h2>
-          <Transaction transaction={transaction}/>
         </div>
 
         <div className="container-fluid">
-          <FilterLink filter="payments">Payments</FilterLink>
-          <button className="btn btn-default" onClick={()=>setFilter('FILTER_BY_REWARDS')}>REWARDS</button>
-          <button className="btn btn-default" onClick={()=>setFilter('FILTER_BY_FEES')}>FEES</button>
-          <button className="btn btn-default" onClick={()=>setFilter('FILTER_BY_PAYMENTS')}>PAYMENTS</button>
-          <button className="btn btn-default" onClick={()=>setFilter('FILTER_BY_TRANSACTIONS')}>TRANSACTIONS</button>
-          <button className="btn btn-default" onClick={()=>setFilter('CLEAR_FILTER')}>ALL</button>
-
-          Total Amount: {totalAmount}
-
           <h3>Expense Activity</h3>
-          <Table params={params}/>
+          Filter by:{" "}
+          <FilterLink filter="payments">Payments</FilterLink>{" "}
+          <FilterLink filter="rewards">Rewards</FilterLink>{" "}
+          <FilterLink filter="fees">Fees</FilterLink>{" "}
+          <FilterLink filter="transactions">Trasactions</FilterLink>{" "}
+          <FilterLink filter="">All</FilterLink>{" "}
+        <br/>
+
+          <h4>Total {activityType} amount: ${totalAmount.toString().replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,")}</h4>
+          {transaction.id ?
+            <Transaction transaction={transaction} onClick={clearTransactionId}/>
+
+            : <Table params={params}/>
+          }
+
         </div>
 
       </div>
